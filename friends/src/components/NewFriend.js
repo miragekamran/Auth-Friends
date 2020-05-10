@@ -1,5 +1,7 @@
 import React from "react";
 import axiosWithAuth from "../utill/axiosWithAuth";
+import { Button, TextField, Container } from "@material-ui/core";
+import styled from "styled-components";
 
 export default class NewFriend extends React.Component {
   state = {
@@ -37,32 +39,50 @@ export default class NewFriend extends React.Component {
 
   render() {
     return (
-      <div>
-        <form onSubmit={this.state.addFriend}>
-          <input
-            type="text"
-            name="name"
-            placeholder="Name"
-            value={this.state.name}
-            onChange={this.handleChange}
-          />
-          <input
-            type="number"
-            name="Age"
-            placeholder="Age"
-            value={this.state.age}
-            onChange={this.handleChange}
-          />
-          <input
-            type="text"
-            name="email"
-            placeholder="email"
-            value={this.state.email}
-            onChange={this.onChange}
-          />
-          <button>Add New Friend</button>
-        </form>
-      </div>
+      <Container maxWidth="sm">
+        <MyNewFriendBox>
+          <form onSubmit={this.state.addFriend}>
+            <TextField
+              type="text"
+              name="name"
+              placeholder="Name"
+              value={this.state.name}
+              onChange={this.handleChange}
+            />
+            <TextField
+              type="number"
+              name="Age"
+              placeholder="Age"
+              value={this.state.age}
+              onChange={this.handleChange}
+            />
+            <TextField
+              type="text"
+              name="email"
+              placeholder="Email"
+              value={this.state.email}
+              onChange={this.onChange}
+            />
+            <Button
+              className="new-friend-btn"
+              variant="contained"
+              color="primary"
+              type="submit"
+            >
+              Add New Friend
+            </Button>
+          </form>
+        </MyNewFriendBox>
+      </Container>
     );
   }
 }
+
+// styles
+const MyNewFriendBox = styled.div`
+  position: relative;
+  top: 200px;
+  .new-friend-btn {
+    margin: 10px 0px;
+  }
+`;

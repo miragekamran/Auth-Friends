@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axiosWithAuth from "../utill/axiosWithAuth";
+import {Grid} from '@material-ui/core';
+import styled from 'styled-components';
 
 export default function FriendsList() {
   const [friends, setFriends] = useState([]);
@@ -14,13 +16,17 @@ export default function FriendsList() {
     <div>
       {friends.map((friend) => {
         return (
-          <div>
+          <FriensListStyle>
             <h2>{friend.name}</h2>
             <p>{friend.age}</p>
             <p>{friend.email}</p>
-          </div>
+          </FriensListStyle>
         );
       })}
     </div>
   );
 }
+
+const FriensListStyle = styled.div`
+    border: 1px solid black;
+`;
