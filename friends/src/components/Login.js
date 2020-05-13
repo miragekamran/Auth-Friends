@@ -48,9 +48,9 @@ export default class Login extends React.Component {
             value={this.state.credentials.password}
             onChange={this.handleChange}
           />
-          <Button variant="contained" color="primary">
+          <button variant="contained" color="primary">
             Log In
-          </Button>
+          </button>
         </form>
       </div>
     );
