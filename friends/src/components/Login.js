@@ -1,5 +1,6 @@
 import React from "react";
-import axiosWithAuth from '../utill/axiosWithAuth';
+import { Button, TextField, Container } from "@material-ui/core";
+import axiosWithAuth from "../utill/axiosWithAuth";
 
 export default class Login extends React.Component {
   state = {
@@ -24,31 +25,32 @@ export default class Login extends React.Component {
       .post("/login", this.state.credentials)
       .then((res) => {
         localStorage.setItem("token", res.data.payload);
-        this.props.history.push("/protected");
+        this.props.history.push("/friendslist");
       })
       .catch((err) => {
-        console.log("Error is", err);
-      })
-      .finally(() => window.location.reload());
+        console.log("Error is", err.response);
+      });
   };
 
   render() {
     return (
       <div>
         <form onSubmit={this.login}>
-          <input
+          <TextField
             type="text"
             name="username"
             value={this.state.credentials.username}
             onChange={this.handleChange}
           />
-          <input
+          <TextField
             type="password"
             name="password"
             value={this.state.credentials.password}
             onChange={this.handleChange}
           />
-          <button>Log In</button>
+          <Button variant="contained" color="primary">
+            Log In
+          </Button>
         </form>
       </div>
     );
