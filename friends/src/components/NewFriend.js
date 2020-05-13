@@ -38,7 +38,7 @@ export default class AddFriend extends React.Component {
 
   render() {
     return (
-      <div>
+      <Container>
         <form onSubmit={this.addFriend}>
           <TextField
             type="text"
@@ -61,11 +61,11 @@ export default class AddFriend extends React.Component {
             value={this.state.newFriend.age}
             onChange={this.handleChange}
           />
-          <button>
+          <Button variant="contained" color="primary" type='submit'>
             Add Friend
-          </button>
+          </Button>
         </form>
-      </div>
+      </Container>
     );
   }
 }
